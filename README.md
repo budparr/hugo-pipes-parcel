@@ -9,10 +9,7 @@ We use a [Changelog](https://github.com/theNewDynamic/hugo-starter/blob/master/C
  - [Hugo](http://gohugo.io/) - A general-purpose website framework—written in Go—that generates static webpages.
  - [Parcel](https://parceljs.org/) - A "blazing" fast, zero configuration web application bundler.
  - PostCSS | [TailwindsCSS](https://tailwindcss.com/) (library of JS-based CSS classes ) | [PurgeCSS](https://www.purgecss.com/) (removes unused CSS)
- - JS: [Quicklink](https://github.com/GoogleChromeLabs/quicklink/) Pre-fetch links on a page
- - JS: [Lazysizes](https://github.com/aFarkas/lazysizes) (lazy asset loading)
  - [KyleAMathews/typefaces](https://github.com/KyleAMathews/typefaces) (load OS fonts locally with one little `require`)
- - [HTMLTest](https://github.com/wjdp/htmltest) - A Go-based link HTML linter for links, images, scripts references.
  
 
 # Hugo Asset Pipline
