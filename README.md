@@ -2,7 +2,7 @@
 
 Note that this repo is only concerned with demonstrating an asset pipeline and not considered a full starter. Do with it as you wish, but keep in mind that everything here is designed for our internal workflow.
 
-We use a [Changelog](https://github.com/theNewDynamic/hugo-starter/blob/master/CHANGELOG.md) on all of our projects. Please see that file for updates.
+We use a [Changelog](CHANGELOG.md) on all of our projects. Please see that file for updates.
 
 ## tools
 
