@@ -1,0 +1,18 @@
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,minimum-scale=1">
+    
+    {{.Hugo.Generator}}
+        
+    {{ partial "stylesheets.html" . }}
+    {{ partial "scripts.html" . }}
+        
+  </head>
+  <body>
+    <div class="bg-red h-screen text-center p-32 font-sans">
+      {{ block "main" . }}{{ end }}
+    </div>
+  </body>
+</html>

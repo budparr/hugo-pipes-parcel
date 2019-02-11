@@ -1,0 +1,24 @@
+{{ $css := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") | minify }}
+{{ with $css }}
+  {{ $securecss := . | resources.Fingerprint }}  
+  <link rel="stylesheet" href="{{ $securecss.Permalink | relURL  }}" integrity="{{ $securecss.Data.Integrity }}" crossorigin="anonymous"> 
+{{ end }}
+
+
+{{ if (fileExists "./assets/output/index.css") }}  
+{{/* If we have an index.css file, it's for fonts. So process it with Pipes */}}
+  {{ $fonts_css := resources.Get "output/index.css" | minify }}
+  {{ with $fonts_css }}
+    {{ $fonts_securecss := . | resources.Fingerprint }}  
+    <link rel="stylesheet" href="{{ $fonts_securecss.Permalink | relURL  }}" integrity="{{ $fonts_securecss.Data.Integrity }}" crossorigin="anonymous"> 
+  {{ end }}
+    {{/* And, Parcel generates the files to the output directory. Grab those files to create Prefetch links, and using Pipes, also puts them in our public folder */}}
+  {{ $path := "./assets/output" }}
+  {{ $files := readDir $path }}
+  {{ range $files }}
+    {{ if in .Name "woff" }}  
+      {{ $file := resources.Get (printf "%s%s" "output/" .Name)}}    
+      <link rel="preload" href="{{ $file.Permalink | relURL }}" as="font" crossorigin>  
+    {{ end }}
+  {{ end }}
+{{ end }}

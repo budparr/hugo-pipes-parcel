@@ -1,0 +1,28 @@
+{
+  "name": "hugo-pipes-parcel",
+  "version": "2.0.0",
+  "description": "Starter files for a Hugo project",
+  "main": "index.js",
+  "repository": "https://github.com/theNewDynamic/hugo-starter.git",
+  "author": "budparr <budparr@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm -rf public/ assets/output static/output resources",
+    "deploy": "NODE_ENV=production maid deploy",
+    "dev": "NODE_ENV=development maid dev server --gc --disableFastRender --navigateToChanged",
+    "hugo": "NODE_ENV=development hugo serve --gc --disableFastRender --navigateToChanged",
+    "start": "yarn dev"
+  },
+  "devDependencies": {
+    "@fullhuman/postcss-purgecss": "^1.1.0",
+    "autoprefixer": "^9.4.7",    
+    "maid": "^0.3.0",
+    "parcel-bundler": "^1.11.0",
+    "postcss-cli": "^6.1.1",
+    "postcss-import": "^12.0.1",
+    "postcss-modules": "^1.4.1",    
+    "tailwindcss": "^0.7.4",        
+    "typeface-roboto": "^0.0.54"
+  },
+  "dependencies": {}
+}
