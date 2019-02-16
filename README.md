@@ -33,7 +33,7 @@ This asset pipeline is a shift for us from using Webpack to process JS/Fonts/CSS
 
 ## CSS
 
-- Uses Hugo Pipes, utlizing PostCSS.
+- Uses Hugo Pipes, utlizing PostCSS. NOTE: we use this method because we use utility-class CSS. I otherwise recommend you use Parcel to process your CSS. See "How to Switch to running JS-based PostCSS" below.
 - Hugo processes `assets/css/styles.css` with `assets/css/postcss.config.js`, utilizing Imports, TailwindCSS, Autoprefixer, and PurgeCSS.
 - **If `NODE_ENV=development` is present in the build command, Hugo/PostCSS will NOT process the file through PurgeCSS.**
 - Hugo outputs the processed CSS file to `public/css/styles.min.[hash].css`.
