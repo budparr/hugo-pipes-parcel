@@ -33,10 +33,19 @@ This asset pipeline is a shift for us from using Webpack to process JS/Fonts/CSS
 
 ## CSS
 
-- Uses Hugo Pipes, utlizing PostCSS. NOTE: we use this method because we use utility-class CSS. I otherwise recommend you use Parcel to process your CSS. See "How to Switch to running JS-based PostCSS" below.
-- Hugo processes `assets/css/styles.css` with `assets/css/postcss.config.js`, utilizing Imports, TailwindCSS, Autoprefixer, and PurgeCSS.
-- **If `NODE_ENV=development` is present in the build command, Hugo/PostCSS will NOT process the file through PurgeCSS.**
+- ~Uses Hugo Pipes, utlizing PostCSS. NOTE: we use this method because we use utility-class CSS. I otherwise recommend you use Parcel to process your CSS. See "How to Switch to running JS-based PostCSS" below.~
+- Uses Parcel/PostCSS as default. See "How to Switch to Hugo-based PostCSS" below.
+
+### CSS via Hugo
+- Hugo processes `assets/css/styles.css` with `assets/postcss.config.js`, utilizing Imports, TailwindCSS, Autoprefixer, and PurgeCSS.
+- **If `NODE_ENV=development` is present in the build command, PostCSS will NOT process the file through PurgeCSS.**
 - Hugo outputs the processed CSS file to `public/css/styles.min.[hash].css`.
+
+### CSS via Parcel
+- Parcel processes `assets/css/styles.css` with `assets/postcss.config.js`, utilizing Imports, TailwindCSS, Autoprefixer, and PurgeCSS.
+- **If `NODE_ENV=development` is present in the build command, PostCSS will NOT process the file through PurgeCSS.**
+- Hugo outputs the processed CSS file to `assets/output/index.[hash].css`.
+
 
 ## Fonts
 
@@ -70,11 +79,8 @@ This asset pipeline is a shift for us from using Webpack to process JS/Fonts/CSS
 - Must run PostCSS (with Node modules) to build in production on the server, building CSS with every change.
 - Creates a separate CSS file for main styles apart from any CSS files generated for fonts.
 
-### How to Switch to running JS-based PostCSS
+### How to Switch to running Hugo-based PostCSS
 
-- Put PostCSS in site root (not tested if current file works).
-- Add the main CSS file to `assets/index.js`.
-- Change Tailwind imports to call tailwind directly (instead of using imports).
-- Change initial CSS file `layouts/_head/stylesheets.html` to not use PostCSS.
-- Change initial CSS file `layouts/_head/stylesheets.html` to look for index.css (can accomplish this by moving the css file out of the fonts section and into the main).
-- Make sure the fonts are still being called.
+- Remove the main CSS file to `assets/index.js`.
+- Change Tailwind imports to call tailwind via @import, instead of directly.
+- Change initial CSS file `layouts/_head/stylesheets.html` to use Hugo (see comments in that file).
