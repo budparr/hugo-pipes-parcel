@@ -8,13 +8,14 @@
   "license": "MIT",
   "scripts": {
     "clean": "rimraf public/ assets/output static/output resources",
-    "build": "run-s build:assets build:hugo",
+    "build": "run-s deploy:assets build:hugo",
     "start": "run-s build:assets dev",
     "dev": "run-p dev:parcel dev:hugo",
     "dev:hugo": "cross-env NODE_ENV=development hugo server --gc --disableFastRender --navigateToChanged",
     "dev:parcel": "cross-env NODE_ENV=development parcel watch ./assets/index.js --out-dir assets/output",
-    "build:assets": "parcel build ./assets/index.js --out-dir assets/output --experimental-scope-hoisting",
-    "build:hugo": "hugo --gc --minify"
+    "build:assets": "cross-env NODE_ENV=development parcel build ./assets/index.js --out-dir assets/output --experimental-scope-hoisting  --no-cache",
+    "deploy:assets": "cross-env NODE_ENV=production parcel build ./assets/index.js --out-dir assets/output --experimental-scope-hoisting --no-cache",
+    "build:hugo": "cross-env NODE_ENV=production hugo --gc --minify"
   },
   "devDependencies": {
     "@fullhuman/postcss-purgecss": "^1.1.0",
