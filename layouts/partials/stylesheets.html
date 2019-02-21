@@ -1,9 +1,19 @@
-{{ $css := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") | minify }}
+ {{/*  Use this method to have Parcel process CSS  */}}
+{{ $css := resources.Get "output/index.css" | minify }}
 {{ with $css }}
   {{ $securecss := . | resources.Fingerprint }}  
   <link rel="stylesheet" href="{{ $securecss.Permalink | relURL  }}" integrity="{{ $securecss.Data.Integrity }}" crossorigin="anonymous"> 
 {{ end }}
 
+  {{/*    
+    Use this method to have Hugo process PostCSS
+  {{ $css := resources.Get "css/styles.css" | postCSS (dict "config" "./assets/css/postcss.config.js") | minify }}
+  {{ with $css }}
+    {{ $securecss := . | resources.Fingerprint }}  
+    <link rel="stylesheet" href="{{ $securecss.Permalink | relURL  }}" integrity="{{ $securecss.Data.Integrity }}" crossorigin="anonymous"> 
+  {{ end }}  
+  
+  */}}
 
 {{ if (fileExists "./assets/output/index.css") }}  
 {{/* If we have an index.css file, it's for fonts. So process it with Pipes */}}
