@@ -1,6 +1,6 @@
 /* Base - Variables: tailwind-config.js */
 
-@import "tailwindcss/preflight";
+@import "tailwindcss/base";
 @import "tailwindcss/components";
 
 /* Modules */
